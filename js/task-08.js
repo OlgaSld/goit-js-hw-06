@@ -9,6 +9,8 @@
 
 const formEl = document.querySelector('.login-form');
 
+const dataForm = {};
+
 function onFormSubmit(evt) {
     evt.preventDefault();
     const {
@@ -17,12 +19,16 @@ function onFormSubmit(evt) {
 
     console.log(evt.currentTarget);
 
-    if(email.value === "" && password.value === "") {
+    if (email.value === "" || password.value === "") {
         alert(`Please fill in all the fields!`);
-    }
-
-    console.log(`Email: ${email.value}, Password: ${password.value}`);
-    evt.currentTarget.reset();
+    } else {
+        dataForm.email = email.value,
+        dataForm.password = password.value
+        
+        console.log(dataForm);
+    } 
+    evt.currentTarget.reset();  
+    
 }
 
 formEl.addEventListener('submit', onFormSubmit);

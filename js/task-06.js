@@ -18,10 +18,17 @@ const inputDataLength = textInput.getAttribute('data-length');
 console.log(inputDataLength);
 
 const checkInputValueLength = () => {
-    if(Number(textInput.value.length) === Number(inputDataLength)) {
-        textInput.classList.add('valid'); 
+    if (Number(textInput.value.length) === Number(inputDataLength)) {
+        if (textInput.classList.contains('invalid')) {
+            textInput.classList.replace('invalid', 'valid');
+        } else {textInput.classList.add('valid'); 
+        }
     } else {
+        if (textInput.classList.contains('valid')) {
+            textInput.classList.replace('valid', 'invalid');
+        } else {
         textInput.classList.add('invalid')
+        }
     };
 }
 

@@ -12,7 +12,7 @@ const buttonEl = document.querySelector('.change-color');
 console.dir(buttonEl);
 const randomBgColor = document.querySelector('.color');
 console.log(randomBgColor); 
-const bodyColor = document.querySelector('.widget');
+const bodyColor = document.querySelector('body');
 console.log(bodyColor);
 
 

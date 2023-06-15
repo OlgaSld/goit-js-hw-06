@@ -23,32 +23,40 @@
 // Створи функцію destroyBoxes(), яка очищає вміст div#boxes, у такий спосіб видаляючи всі створені елементи.
 
 const inputQuantity = document.querySelector('#controls');
+console.dir(inputQuantity);
 const buttonCreate = document.querySelector('[data-create]');
 const buttonDestroy = document.querySelector('[data-destroy]');
 const newBoxEl = document.querySelector('#boxes');
 
-buttonCreate.addEventListener('click', createBoxes());
+buttonCreate.addEventListener('click', createBoxes);
 
-buttonDestroy.addEventListener('click', () => {
-  inputQuantity.innerHTML = '';
-});
+buttonDestroy.addEventListener('click', destroyBoxes);
 
-let amount = Number(inputQuantity.value);
+function createBoxes() {
+  const amount = inputQuantity.firstElementChild.value;
+  console.log(amount);
+  const boxes = [];
 
-function createBoxes(amount) {
   if (amount > 0) {
-  for (let i = 0, i <= amount; i += 1) {
-    const item = document.createElement('div');
+    for (let i = 0; i <= amount; i += 1) {
+      const item = document.createElement('div');
+      const size = 30 + i * 10;
+      const color = getRandomHexColor();
 
-    item.style.width = 30 + (10 * 1) + 'px';
-    item.style.height = 30 + (10 * 1) + 'px';
-    item.style.backgroundColor = getRandomHexColor();
+      item.style.width = `${size}px`;
+      item.style.height = `${size}px`;
+      item.style.backgroundColor = color;
 
-    newBoxEl.append(item);
+      boxes.push(item);
+
+    // item.style.width = 30 + (10 * 1) + 'px';
+    // item.style.height = 30 + (10 * 1) + 'px';
+    // item.style.backgroundColor = getRandomHexColor();
+
+    newBoxEl.append(...boxes);
   }
   }
 }
-
 
 function destroyBoxes() {
   newBoxEl.innerHTML = '';
